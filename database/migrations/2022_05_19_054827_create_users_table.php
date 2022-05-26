@@ -17,7 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username');
             $table->char('password');
+            $table->string('contact_info');
             $table->boolean('is_admin')->default(false);
+            $table->string('remember_token')->default(null);
+            $table->integer('confirmUrl');
+            $table->string('logo');
         });
     }
 

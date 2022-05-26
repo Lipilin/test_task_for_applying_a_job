@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Post extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-    protected $fillable=['username','password','logo','confirmUrl','contact_info'];
+    protected $fillable=['title','text','visibility','author'];
 }

@@ -26,4 +26,5 @@ Route::post('/create_post','App\Http\Controllers\PostController@create');
 Route::post('/change_visibility','App\Http\Controllers\PostController@change_visibility');
 Route::post('/delete_post','App\Http\Controllers\PostController@delete');
 Route::post('/change_logo','App\Http\Controllers\UserController@change_logo');
+Route::post('/edit_post','App\Http\Controllers\PostController@edit_post');
 

@@ -43,4 +43,17 @@ class PostController extends Controller
         Post::where('id',$request['id'])->where('author',Auth::id())->update(['visibility'=>!$request['visibility']]);
     	return redirect('/');
     }
+
+    public function edit_post(Request $request){
+        $data_validation = Validator::make($request->all(),[
+            'title'=>'required',
+            'text'=>'required',      
+        ])->validate();
+        if(Gate::allows('login-user-is-admin')){
+            Post::where('id',$request['id'])->update(['text'=>$request['text'],'title'=>$request['title']]);
+            return redirect('/');
+        }
+        Post::where('id',$request['id'])->where('author',Auth::id())->update(['text'=>$request['text'],'title'=>$request['title']]);
+        return redirect('/');
+    }
 }

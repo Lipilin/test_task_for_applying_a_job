@@ -14,8 +14,8 @@ class PostController extends Controller
 {
     public function create(Request $request){
     	$data_validation = Validator::make($request->all(),[
-    		'title'=>'required',
-    		'text'=>'required',
+    		'title'=>'required|max:255|min:1',
+    		'text'=>'required|max:255|min:1',
     		'visibility'=>'boolean',  		
     	])->validate();
     	$new_post=[
@@ -46,8 +46,8 @@ class PostController extends Controller
 
     public function edit_post(Request $request){
         $data_validation = Validator::make($request->all(),[
-            'title'=>'required',
-            'text'=>'required',      
+            'title'=>'required|max:255|min:1',
+            'text'=>'required|max:255|min:1',      
         ])->validate();
         if(Gate::allows('login-user-is-admin')){
             Post::where('id',$request['id'])->update(['text'=>$request['text'],'title'=>$request['title']]);
